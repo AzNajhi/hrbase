@@ -1,0 +1,1791 @@
+<!doctype html>
+<style>
+
+/* Navigation Styles */
+nav {
+    display: block;
+    text-align: center;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav li {
+    position: relative;
+    height: 50px;
+    padding: 5px 5px; /* Adjust padding as needed */
+}
+.nav > li > a {
+    margin-bottom: 1px;
+}
+
+.nav > li:hover, 
+.nav > li:hover > a {
+    background-color: #f0f0f0;
+}
+
+.nav li:hover > a {
+    background-color: #f0f0f0;
+}
+
+.nav > li:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.nav > li:first-child > a {
+    border-radius: 4px 0 0 0;
+}
+
+.nav > li:last-child {
+    border-radius: 0 0 4px 0;
+    margin-right: 0;
+}
+
+.nav > li:last-child > a {
+    border-radius: 0 4px 0 0;
+}
+
+.nav li li a {
+    margin-top: 1px;
+}
+
+.nav li a:first-child:nth-last-child(2):before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 5px solid transparent;
+    top: 50%;
+    right: 5px;
+}
+
+ /* submenu positioning*/
+.nav ul {
+	width: 100%;
+  position: absolute;
+  white-space: nowrap;
+  align-items: center;
+  z-index: 1;
+  left: -99999em;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0px; 
+  border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth effect */
+    background-color: #fff; /* Background color for submenu */
+	width: auto; /* Allow the width to adjust based on content */
+	top: 90%; /* Position submenu below the parent */
+	
+	
+}
+
+.nav > li:hover > ul {
+  left: auto;
+  margin-top: 5px;
+  min-width: 100%;
+   border-radius: 7px; /* Maintain border radius */
+
+}
+.nav > li li:hover > ul { 
+  left: 100%;
+  margin-left: 1px;
+  top: -1px;
+   border-radius: 7px; /* Maintain border radius */
+}
+
+/* Arrow Hover Styling */
+.nav > li > a:first-child:nth-last-child(2):before {
+    border-top-color: #aaa;
+}
+
+.nav > li:hover > a:first-child:nth-last-child(2):before {
+    border: 5px solid transparent;
+    border-bottom-color: #397575;
+    margin-top: -5px;
+}
+
+.nav li li > a:first-child:nth-last-child(2):before {
+    border-left-color: #aaa;
+    margin-top: -5px;
+}
+
+.nav li li:hover > a:first-child:nth-last-child(2):before {
+    border: 5px solid transparent;
+    border-right-color: #397575;
+    right: 10px;
+}
+
+/* Hover Text Style */
+.nav > li:hover > a,
+.nav li li:hover > a,
+.nav li li li:hover > a {
+    font-weight: bold; /* Change text to bold */
+    color: #397575; /* Change text color */
+}
+
+/* Hover Border Radius */
+.nav > li:hover > a,
+.nav li li:hover > a,
+.nav li li li:hover > a {
+    border-radius: 7px; /* Maintain border radius */
+}
+
+/* Hover Height Adjustment */
+.nav > ul,
+.nav > li,
+.nav li li,
+.nav li li li {
+    height: auto; /* Adjusted height on hover */
+}
+
+/* Multi-column Dropdown Container */
+.dropdown-content {
+	
+    column-gap: 5px; /* Space between columns */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    display: none;
+    position: absolute;
+    top: 100%; /* Position submenu below the parent */
+    left: 0; /* Adjusted */
+    z-index: 1;
+	
+}
+
+/* Adjust dropdown link styles */
+.dropdown-content a {
+    display: block;
+    padding: 5px 10px;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav > li:hover .dropdown-content {
+    display: block;
+}
+
+/* Adjust dropdown link styles */
+.dropdown-content a {
+    display: block;
+    padding: 5px 10px;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: #397575;
+}
+
+/* Submenus in dropdown */
+.nav ul ul {
+    left: -99999em;
+    top: 90%;
+    display: none;
+}
+
+.nav ul li:hover > ul {
+    left: 100%;
+    display: block;
+    top: 0;
+}
+
+/* Styling for nested sub-submenus */
+.nav ul ul ul {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 0;
+    left: 100%; /* Position to the right of the parent */
+    min-width: 100%; /* Ensure full width */
+    z-index: 1;
+}
+
+.nav ul ul li:hover > ul {
+    display: block; /* Show on hover */
+    top: 0;
+    left: 100%; /* Position to the right of the parent */
+    min-width: max-content; /* Adjust width based on content */
+}
+
+/* Multi-column Dropdown Container for sub-sub menu */
+.sub-sub-menu {
+    column-gap: 5px; /* Space between columns */
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: none;
+    position: relative; /* Position relative to parent */
+    z-index: 2; /* Ensure it's above parent but below top-level dropdown */
+}
+
+/* Adjust dropdown link styles for sub-sub menu */
+.sub-sub-menu a {
+    display: block;
+    padding: 5px 10px;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Show sub-sub menu on hover */
+.nav ul ul ul:hover .sub-sub-menu {
+    display: block;
+}
+
+
+/* Media query for adjusting column count based on container height */
+@media screen and (min-height: 1000px) {
+    .dropdown-content {
+        column-count: 2; /* Adjust number of columns as needed */
+    }
+}
+
+/* Media query for adjusting column count based on container height */
+@media screen and (min-height: 700px) {
+    .sub-sub-menu {
+        column-count: 2; /* Adjust number of columns as needed */
+    }
+}
+
+
+
+/* Media query for screen width less than or equal to 1200px */
+@media only screen and (max-width: 250px) {
+  nav {
+    display: none; /* Hide the navigation */
+  }
+}
+ </style>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Language" content="en">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Data Tables - Choose between regular React Bootstrap tables or advanced dynamic ones.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+        <meta name="description" content="Choose between regular React Bootstrap tables or advanced dynamic ones.">
+        <!-- Disable tap highlight on IE -->
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" href="./vendors/@fortawesome/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="./vendors/ionicons-npm/css/ionicons.css">
+        <link rel="stylesheet" href="./vendors/linearicons-master/dist/web-font/style.css">
+        <link rel="stylesheet" href="./vendors/pixeden-stroke-7-icon-master/pe-icon-7-stroke/dist/pe-icon-7-stroke.css">
+        <link href="./styles/css/base_style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="app-container app-theme-white body-tabs-shadow ">
+            <div class="app-header">
+				
+				<!-- HEADER -->
+                <div class="app-header__content">
+				
+					<!-- HEADER LEFT LOGO -->
+                    <div class="app-header-left">
+						
+						<div >
+							<img  class="app-header__logo" style="max-width: 100%; height:auto;" src="./images/hrsc_logo.png" alt="Logo">
+						</div>
+							
+						<div class="header-logo-name">
+							<div class="app-page-title-header">
+								<div class="page-title-wrapper">
+									<div class="page-title-heading">
+										<div class="page-title-subheading">HR System & Consulting Sdn Bhd</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+                    </div>
+					
+					<!-- HEADER RIGHT -->
+                    <div class="app-header-right">
+					<!--
+						<div class="search-wrapper active">
+
+                            <div class="input-holder">
+                                <input type="text" class="search-input" placeholder="Search Company">
+                                <button class="search-icon">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>-->
+						<!-- HEADER DOTS SECTION -->
+                        <div class="header-dots">
+							<div class="search-wrapper active">
+
+								<div class="input-holder">
+									<input type="text" class="search-input" placeholder="Search Company">
+									<button class="search-icon">
+										<span></span>
+									</button>
+								</div>
+							</div>
+                            <div class="dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false"
+                                    data-bs-toggle="dropdown" class="p-0 me-2 btn btn-link">
+                                    <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                        <span class="icon-wrapper-bg bg-primary"></span>
+                                        <i class="icon text-primary ion-android-apps"></i>
+                                    </span>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true"
+                                    class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-menu-header">
+                                        <div class="dropdown-menu-header-inner bg-premium-dark">
+                                            <div class="menu-header-image" style="background-image: url('images/dropdown-header/abstract4.jpg');"></div>
+                                            <div class="menu-header-content text-white">
+                                                <h5 class="menu-header-title">Mini Navigation</h5>
+                                                <h6 class="menu-header-subtitle"></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-menu grid-menu-xl grid-menu-3col">
+                                        <div class="g-0 row">
+                                            <div class="col-sm-6 col-xl-6">
+                                                <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                                    <i class="fa-solid fa-user icon-gradient bg-night-sky btn-icon-wrapper btn-icon-lg mb-3"></i>
+                                                    Self Service
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-6 col-xl-6">
+                                                <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+                                                    <i class="fa-solid fa-book icon-gradient bg-night-sky btn-icon-wrapper btn-icon-lg mb-3"></i>
+                                                    HR Base
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" aria-haspopup="true" aria-expanded="false"
+                                    data-bs-toggle="dropdown" class="p-0 me-2 btn btn-link">
+                                    <span class="icon-wrapper icon-wrapper-alt rounded-circle">
+                                        <span class="icon-wrapper-bg bg-danger"></span>
+                                        <i class="icon text-danger fa-solid fa-right-from-bracket"></i>
+                                    </span>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true"
+                                    class="dropdown-menu-sm rm-pointers dropdown-menu dropdown-menu-right">
+                                 <ul class="nav flex-column">
+								  <li class="nav-item-header text-center nav-item">Are you sure want to logout?</li>
+                                        <li class="nav-item-btn text-center nav-item">
+                                            <button class="btn-wide btn btn-danger btn-sm">Logout</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+						<!-- HEADER PROFILE SECTION -->
+                        <div class="header-btn-lg pe-0">
+                            <div class="widget-content p-0">
+                                <div class="widget-content-wrapper">
+                                    <div class="widget-content-left">
+										<!-- HEADER PROFILE -->
+                                        <div class="btn-group">
+                                            <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                                <img width="35" class="rounded-circle" src="https://muftimenk.com/wp-content/uploads/mufti-menk.jpg" alt="">
+                                                <i class="fa fa-angle-down ms-2 opacity-8"></i>
+                                            </a>
+                                            <div tabindex="-1" role="menu" aria-hidden="true"
+                                                class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                                <div class="dropdown-menu-header">
+                                                    <div class="dropdown-menu-header-inner bg-premium-dark">
+                                                        <div class="menu-header-image opacity-1" style="background-image: url('https://www.shutterstock.com/image-illustration/elegant-futuristic-light-reflection-grid-600nw-536582824.jpg');"></div>
+                                                        <div class="menu-header-content text-start">
+                                                            <div class="widget-content p-0">
+                                                                <div class="widget-content-wrapper">
+                                                                    <div class=" me-3">
+                                                                        <img width="42" class="rounded-circle"
+                                                                            src="https://muftimenk.com/wp-content/uploads/mufti-menk.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="">
+                                                                        <div class="widget-heading">MR.Mufti Menk</div>
+                                                                        <div class="widget-subheading opacity-8">Senior Management</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="scroll-area-xs" style="height: 150px;">
+                                                    <div class="scrollbar-container ps">
+                                                        <ul class="nav flex-column">
+                                                            <li class="nav-item-header nav-item">Activity</li>
+                                                            <li class="nav-item">
+                                                                <a href="javascript:void(0);" class="nav-link">Change Password</a>
+                                                            </li>
+															 <li class="nav-item">
+                                                                <a href="javascript:void(0);" class="nav-link">Edit Profile</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- NAVIGATION BAR -->
+				<nav>
+					<ul class="nav">
+						<!-- HOME -->
+						<li class="hideOnMobile "><a href="global_home222.html" class="opacity-10">
+							<i class="fa-solid fa-house"></i>&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+						</li>
+						<!-- COMPANY SETTING -->
+						<li class="hideOnMobile "><a href="#"><i class="fa-regular fa-folder-closed"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+								Company Setting&nbsp;&nbsp;</a>
+							<ul class="dropdown-content">
+								<li><a href="company_info.html"><i class="fa-regular fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp;Company Info
+									</a>
+								</li>
+								<li><a href="decision_flow_pre.html"><i class="fa-solid fa-person-circle-check"></i>
+										&nbsp;&nbsp;&nbsp;Decision Flow</a>
+								
+								</li>
+								<li><a href="two_factor_authentication_latest.html"><i class="fa-solid fa-shield-halved"></i>&nbsp;&nbsp;&nbsp;Two-factor Authentication</a>
+								
+								</li>
+							</ul>
+						</li>
+						<!-- GENERIC SETTING -->
+						<li class="hideOnMobile " >
+							<a href="#"><i class="fa-regular fa-folder-closed"></i>&nbsp;&nbsp;&nbsp;&nbsp;Generic Setting&nbsp;&nbsp;</a>
+							<ul class="dropdown-content">
+								<li><a href="email_editor.html"><i class="fa-regular fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp;Email Editor
+									</a>
+								</li>
+								<li><a href="EA_personal_detail.html"><i class="fa-solid fa-person"></i>&nbsp;&nbsp;&nbsp;Personal Details</a>
+								
+								</li>
+								<li><a  href=""><i class="fa-solid fa-earth-americas"></i>&nbsp;&nbsp;&nbsp;Country Specific Setting</a>
+									<ul>
+										<li><a href="country_nationality.html">Country and Nationality</a></li>
+										<li><a href="country_state_latest.html">State/Province/City</a></li>
+										<li>
+											<a href="country_state_latest.html">Holiday</a>
+											<ul>
+												<li><a href="holiday_year_latest.html">Year Setting</a></li>
+												<li><a href="holiday_setting_search.html">Holiday Setting</a></li>
+											</ul>
+										</li>
+										<li><a href="bank_latest.html">Bank</a></li>
+										
+									</ul>
+								</li>
+								<li><a href="allowance_deduction.html"></i><i class="fa-solid fa-money-bill"></i>&nbsp;&nbsp;&nbsp;Allowance/ Deductions Status</a></li>
+								<li><a href=""><i class="fa-solid fa-briefcase-medical"></i>&nbsp;&nbsp;&nbsp;Medical</a>
+									<ul>
+										<li><a href="GS_medic.html">Medical/Panel Provider </a></li>
+									</ul>
+								</li>
+								<li><a href="GS_view_audit.html"><i class="fa-solid fa-magnifying-glass-chart"></i>&nbsp;&nbsp;&nbsp;View Audit Trail</a></li>
+								<li><a href="GS_global_emp_id.html"><i class="fa-solid fa-passport"></i>&nbsp;&nbsp;&nbsp;Global Employee ID</a></li>
+								<li><a href="GS_block_payroll.html"><i class="fa-solid fa-ban"></i>&nbsp;&nbsp;&nbsp;Block Payroll</a></li>
+							</ul>
+						</li>
+						
+						<!-- MODULE SETTING -->
+						<li  class="hideOnMobile ">
+							<a href="#"><i class="fa-regular fa-folder-closed"></i>&nbsp;&nbsp;&nbsp;&nbsp;Module Setting&nbsp;&nbsp;</a>
+							<ul class="dropdown-content">
+								<li><a  href="#"><i class="fa-solid fa-sack-dollar"></i>&nbsp;&nbsp;&nbsp;Compensation & Benefits</a>
+									<ul>
+										<li><a href="comps_benefit_setting.html">Benefits</a></li>
+										<li><a href="claimable_setting_pre.html">Claimable</a></li>
+										<li><a href="medical_setting.html">Medicals</a></li>
+										<li><a href="comps_health_setting.html">Health Check Up</a></li>
+										<li><a href="#">Home Leave Passage</a>
+											<ul>
+												<li><a href="home_leave_passage.html">Group Entitlement</a></li>
+												<li><a href="CNB_flight_ticket.html">Flight Ticket Rates</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-regular fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp;Employee Administration</a>
+									<ul class="sub-sub-menu">
+										<li><a href="EA_employee_id.html">Employee ID</a></li>
+										<li><a href="salutation.html">Salutation</a></li>
+										<li><a href="affix.html">Affix Type</a></li>
+										<li><a href="gender.html">Gender</a></li>
+										<li><a href="movement_type.html">Movement Type</a></li>
+										<li><a href="movement_reason.html">Movement Reason</a></li>
+										<li><a href="comfirm_period.html">Confirmation Period</a></li>
+										<li><a href="tertiary_level.html">Tertiary Level</a></li>
+										<li><a href="tertiary_achievement.html">Tertiary Achievement</a></li>
+										<li><a href="field_study.html">Field of Study</a></li>
+										<li><a href="EA_employee_group.html">Employee Group</a></li>
+										<li><a href="EA_employee_auth_group.html">Employee Authoriation Group</a></li>
+										<li><a href="EA_retirement_age2.html">Retirement Age</a></li>
+										<li><a href="EA_work_break.html">Work Break</a></li>
+										<li><a href="EA_daily_shift.html">Daily Shift Schedule</a></li>
+										<li><a href="weekly_shift_schedule.html">Weekly Shift Schedule</a></li>
+										<li><a href="mass_upload_weekly.html">Mass Upload Weekly Shift Schedule</a></li>
+										<li><a href="state_shift_schedule.html">State Shift Schedule</a></li>
+										<li><a href="professional_bodies.html">Professional Bodies</a></li>
+										<li><a href="free_field.html">Free Fields</a></li>
+										<li><a href="alert_notification.html">Alerts & Notification</a></li>
+										<li><a href="personal_info_settingg.html">Personal Information</a></li>
+										<li><a href="cheque_payment.html">Cheque Payment Reason</a></li>
+										<li><a href="password_expiry.html">Password Expiry</a></li>
+										<li><a href="company_asset.html">Company Asset</a></li>
+										<li><a href="EA_salary_scale2.html">Salary Scale</a></li>
+										<li><a href="EA_list_of_child.html">List of Child Care</a></li>
+										
+										
+									</ul>
+								
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-person-circle-check"></i>&nbsp;&nbsp;&nbsp;Employee Development</a>
+									<ul>
+										<li><a href="ED_proficiency_type.html">Proficiency Type</a></li>
+										<li><a href="ED_proficiency_rating.html">Proficiency/Rating</a></li>
+										<li><a href="#">Profiling Assignment</a>
+											<ul>
+												<li><a href="cluster.html">Clusters</a></li>
+												<li><a href="profilling_assignment_search.html">Classifications</a></li>
+												<li><a href="major_elements_search.html">Major Elements</a></li>
+												<li><a href="elements.html">Elements</a></li>
+											</ul>
+										</li>
+										<li><a href="ED_proficiency_assignment.html">Proficiency Assignment</a></li>
+										<li><a href="career_path.html">Career Path</a></li>
+										<li><a href="ED_indicator_setting.html">Indicator for Suitability %</a></li>
+										<li><a href="target_key_position.html">Target/Key Position</a></li>
+										<li><a href="">9 Boxes Matrix</a>
+											<ul>
+												<li><a href="ED_9BM_cluster.html">Clusters</a></li>
+												<li><a href="ED_9BM_axis_det.html">Axis Determination</a></li>
+												<li><a href="ED_9BM_axis_label.html">Axis Labeling</a></li>
+												<li><a href="ED_9BM_box_desc.html">Box Description</a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-clock"></i>&nbsp;&nbsp;&nbsp;Flex Benefit</a>
+									<ul>
+										<li><a href="flex_ben_type.html">Flex Benefit Type</a></li>
+										<li><a href="flex_ben_premium.html">Flex Benefit Premium</a></li>
+										<li><a href="flex_ben_claim.html">Flex Benefit Claim</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-shield-halved"></i>&nbsp;&nbsp;&nbsp;Form Management</a>
+									<ul>
+										<li><a href="#">Asset Declaration Forms</a>
+											<ul>
+												<li><a href="method_of_acquisition.html">Method of Acquisition</a></li>
+												<li><a href="financial_source.html">Financial Source of Acquisition</a></li>
+												<li><a href="type_of_asset.html">Type of Asset</a></li>
+												<li><a href="ownership.html">Ownership</a></li>
+											</ul>
+										</li>
+										<li><a href="asset_disposal_declaration.html">Asset Disposal Declaration</a></li>
+										<li><a href="#">Company/Business Declaration</a>
+											<ul>
+												<li><a href="position_company.html">Position in the Company</a></li>
+												<li><a href="type_company.html">Type of Company/Business</a></li>
+											</ul>
+										</li>
+										
+										<li><a href="notifacation_setting.html">Notification Setting</a></li>
+										<li><a href="#">Guarantee Letter</a>
+											<ul>
+												<li><a href="type_guarantee_letter.html">Type of Guarentee Letter</a></li>
+												<li><a href="guarantee_letter_setting.html">Guarentee Letter</a></li>
+											</ul>
+										</li>
+										<li><a href="#">eBooking</a>
+											<ul>
+												<li><a href="FM_ebooking_type.html">Setting Type</a></li>
+												<li><a href="FM_ebooking_feature.html">Setting Feature</a></li>
+												<li><a href="FM_ebooking_PIC.html">Setting PIC List</a></li>
+												<li><a href="FM_ebooking_facilities.html">Setting Facility</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Retirement Form</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-person-military-to-person"></i>&nbsp;&nbsp;&nbsp;Industrial Relation</a>
+									<ul>
+										<li><a href="disciplinary_category.html">Disciplinary Category</a></li>
+										<li><a href="disciplinary_type.html">Disciplinary Type</a></li>
+										<li><a href="punishment_type.html">Punishment Type</a></li>
+										<li><a href="IR_decision_type.html">Decision Type</a></li>
+										<li><a href="case_status.html">Case Status</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-umbrella-beach"></i>&nbsp;&nbsp;&nbsp;Leave Management</a>
+									<ul>
+										<li><a href="leave_type.html">Type of Leave/Absences</a></li>
+										<li><a href="leave_ent.html">Leave Entitlement</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-hand-holding-dollar"></i>&nbsp;&nbsp;&nbsp;Loan Management</a>
+									<ul>
+										<li><a href="loan_type.html">Loan Type</a></li>
+										<li><a href="LM_loan_pairing.html">Loan Pairing/Sharing</a></li>
+										<li><a href="LM_loan_free_field.html">Loan Free Fields</a></li>
+										<li><a href="LM_property_type.html">Property Type</a></li>
+										<li><a href="LM_loan_setting.html">Loan Setting</a></li>
+										<li><a href="LM_app_form_setting.html">Application Form</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-wallet"></i>&nbsp;&nbsp;&nbsp;Payroll</a>
+									<ul class="sub-sub-menu">
+										<li><a href="#">Bank</a>
+											<ul>
+												<li><a href="PR_bank_payment_type.html">Payment Type</a></li>
+												<li><a href="PR_bank_employer.html">Employer</a></li>
+												<li><a href="PR_bank_employee.html">Employee</a></li>
+												<li><a href="PR_bank_enable.html">Enable/Disable</a></li>
+											</ul>
+										</li>
+										<li><a href="PR_allowances.html">Allowance</a></li>
+										<li><a href="PR_allow_ent.html">Allowance Entitlement</a></li>
+										<li><a href="PR_deduction.html">Deduction</a></li>
+										<li><a href="PR_deduct_ent.html">Deduction Entitlement</a></li>
+										<li><a href="PR_statutory.html">Statutory Information</a></li>
+										<li><a href="PR_nonstatutory.html">Non-Statutory Information</a></li>
+										<li><a href="HRDF.html">HR Development Fund</a></li>
+										<li><a href="payroll_period_latest.html">Payroll Defined</a></li>
+										<li><a href="payroll_cycle.html">Payroll Cycle</a></li>
+										<li><a href="message_payslip.html">Message on Payslip</a></li>
+										<li><a href="#">LHDN Form</a>
+											<ul>
+												<li><a href="PR_LHDN_EA_form.html">EA Form</a></li>
+												<li><a href="cp22a_code.html">CP22A Form</a></li>
+												<li><a href="cp22b_code.html">CP22B Form</a></li>
+												<li><a href="ec_form_code.html">EC Form</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Compensation Matrix(Compa-Ratio)</a>
+											<ul>
+												<li><a href="PR_compa_increment.html">Increment</a></li>
+												<li><a href="PR_compa_bonus.html">Bonus</a></li>
+											</ul>
+										</li>
+										<li><a href="selfservice_integration.html">Self Service Integration</a></li>
+										<li><a href="system_pay_anomalies.html">Payroll Anomalies</a></li>
+										<li><a href="PR_report.html">Payroll Customized Report(Excel)</a></li>
+										<li><a href="PR_gl_code_setting.html">GL Code</a></li>
+										<li><a href="PR_budget_setting.html">Budget</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-timeline"></i>&nbsp;&nbsp;&nbsp;Perfomance Management</a>
+									<ul >
+										<li><a href="performance_appraisal_type.html">Performance Appraisal Type</a></li>
+										<li><a href="performance_perspective_category.html">Performance Perspective/Category</a></li>
+										<li><a href="setting_pd_discipline.html">Performance Discipline</a></li>
+										<li><a href="setting_pd_proficiency_pms.html">Proficiency Type</a></li>
+										<li><a href="perfomance_proficiency_setting.html">Proficienc/Rating</a></li>
+										<li><a href="perfomance_final_rating.html">Final Rating Matrix</a></li>
+										<li><a href="PM_form_setting.html">e-Appraisal: Form Setting</a></li>
+										<li><a href="#">Probationary Form(Self Service)</a>
+											<ul>
+												<li><a href="setting_probation_form.html">Type of Probationary Form</a></li>
+												<li><a href="setting_probation_form_assestment2.html">Areas of Evaluation & Assessment</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-list"></i>&nbsp;&nbsp;&nbsp;Policy & Management</a>
+									<ul>
+										<li><a href="annoucement_setting.html">Announcement Group</a></li>
+										<li><a href="e-directory.html">e-Directory</a></li>
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;Position Management</a>
+									<ul>
+										<li><a href="job_setting.html">Job</a></li>
+										<li><a href="setting_job_grade.html">Job Grade</a></li>
+										<li><a href="position_setting.html">Position</a></li>
+										<li><a href="setting_department_area.html">Organization Area</a></li>
+										<li><a href="#">Department</a>
+											<ul>
+												<li><a href="position_department_hierarchy.html">Department Hierarchy Level</a></li>
+												<li><a href="position_department_search.html">Search Department</a></li>
+											</ul>
+										</li>
+										<li><a href="JDP_relationship.html">JDP Relationship</a></li>
+										<li><a href="JDP_manpower_cost.html">Manpower Cost Information</a></li>
+										<li><a href="budget_manpower.html">Budget of Manpower Cost</a></li>
+										<li><a href="manpower_budget_cost.html">Budget of Manpower</a></li>
+										<li><a href="#">Job Description</a>
+											<ul>
+												<li><a href="position_jobdesc_section.html">Section</a></li>
+												<li><a href="position_jobdesc_section_view.html">Section View</a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp;Recruitment</a>
+									<ul>
+										<li><a href="recruitment_status.html">Recruitment Status</a></li>
+										<li><a href="recruitment_method.html">Recruitment Method</a></li>
+										<li><a href="recruitment_medium.html">Recruitment Medium</a></li>
+										<li><a href="#">Interview Form Setting(Self Service)</a></li>
+											<ul>
+												<li><a href="type_of_interview.html">Type of Interview Form</a></li>
+												<li><a href="areas_of_evaluation.html">Areas of Evaluation & Questionnaire</a></li>
+											</ul>
+										<li><a href="#">Letter Standardization</a>
+											<ul>
+												<li><a href="type_letter.html">Type of Letters/Forms</a></li>
+												<li><a href="areas_of_evaluation.html">Letter Setting</a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-shield-halved"></i>&nbsp;&nbsp;&nbsp;Reporting Management</a>
+									<ul>
+										<li><a href="RM_report_category.html">Report Category</a></li>
+										<li><a href="RM_add_report.html">Add Reports</a></li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-clock"></i>&nbsp;&nbsp;&nbsp;Time Management</a>
+									<ul>
+										<li><a href="#">Reference Key</a>
+											<ul>
+												<li><a href="time_refkey_activity_key.html">Activities Key</a></li>
+												<li><a href="time_refkey_location.html">Location</a></li>
+												<li><a href="time_refkey_device.html">Device</a></li>
+											</ul>
+										</li>
+										<li><a href="time_status_setting.html">Status Setting</a></li>
+										<li><a href="device_type.html">Device Type</a></li>
+										<li><a href="#">Clock In/Out</a>
+											<ul>
+												<li><a href="time_cico_location.html">Location</a></li>
+												<li><a href="time_cico_setting.html">Clock In/Out</a></li>
+											</ul>
+										</li>
+											<li><a href="#">Timesheet</a>
+											<ul>
+												<li><a href="time_refkey_activity_key.html">Setting Category Name</a></li>
+												<li><a href="time_refkey_location.html">Setting Category</a></li>
+												<li><a href="time_refkey_device.html">Setting Category Relationship</a></li>
+											</ul>
+										</li>
+										
+									</ul>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;&nbsp;&nbsp;Training Management</a>
+									<ul>
+										<li><a href="training_category.html">Training Category</a></li>
+										<li><a href="#">Training Provider/Organizer</a>
+											<ul>
+												<li><a href="training_company_list.html">Companies List</a></li>
+												<li><a href="training_trainer_list.html">Trainers List</a></li>
+											</ul>
+										</li>
+										<li><a href="training_budget_year.html">Training Budget Year</a></li>
+										<li><a href="training_cost_setting.html">Training Cost Setting</a></li>
+										<li><a href="training_type.html">Training Type</a></li>
+										<li><a href="training_classification.html">Training Classification</a></li>
+										<li><a href="training_status.html">Training Status</a></li>
+										
+									</ul>
+								</li>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								<!-- Add more links as needed -->
+							</ul>
+						</li>
+						<!-- AUTHORIZATION SETTING -->
+						<li class="hideOnMobile btn-group nav-item">
+							<a href="authorization_expert.html">
+								<i class="fa-regular fa-folder-closed"></i>&nbsp;&nbsp;&nbsp;&nbsp;Authorization Setting&nbsp;&nbsp;&nbsp;</a>
+							<ul class="dropdown-content">
+								<li><a  href="authorization_expert.html"><i class="fa-solid fa-user-tie"></i>&nbsp;&nbsp;&nbsp;&nbsp;Expert User</a></li>
+								<li><a  href="#"><i class="fa-solid fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;Supervisor</a></li>
+							</ul>
+						</li>
+						
+						<!-- ADMIN -->
+						<li class="hideOnMobile btn-group "><a href="#"><i class="fa-regular fa-folder-closed"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+								Admin Menu&nbsp;&nbsp;</a>
+							<ul class="dropdown-content">
+								<li><a  href="#"><i class="fa-regular fa-building"></i>&nbsp;&nbsp;&nbsp;&nbsp;Employee ID</a>
+									<ul>
+										<li><a href="admin_list_eid.html">List EID</a></li>
+										<li><a href="ADMIN_employeeID_change_eid.html">Change EID</a></li>
+										<li><a href="ADMIN_employeeID_delete_eid.html">Delete EID</a></li>
+										<li><a href="ADMIN_employeeID_delete_duplicate.html">Delete Duplicate EID</a></li>
+										
+									</ul>
+								</li>
+								<li><a href="date_joined.html"><i class="fa-solid fa-person-circle-check"></i>
+										&nbsp;&nbsp;&nbsp;Date Joined</a>
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-shield-halved"></i>&nbsp;&nbsp;&nbsp;Module Control</a>
+									<ul>
+										<li><a href="disable_module.html">Disable Module</a></li>
+										<li><a href="ADMIN_modcontrol_disable_email.html">Disable Email</a></li>
+										
+									</ul>
+								</li>
+								<li><a href="ADMIN_jdp_holder.html"><i class="fa-solid fa-hands-holding-child"></i>&nbsp;&nbsp;&nbsp;JDP Holder</a>
+								
+								</li>
+								<li><a href="ADMIN_update_movement_info.html"><i class="fa-solid fa-person-walking"></i>&nbsp;&nbsp;&nbsp;Update Movement Information</a>
+								
+								</li>
+								<li><a href="duplicate_setting.html"><i class="fa-solid fa-copy"></i>&nbsp;&nbsp;&nbsp;Duplicate Setting To Other Company</a>
+								
+								</li>
+								<li><a  href="#"><i class="fa-solid fa-id-badge"></i>&nbsp;&nbsp;&nbsp;License</a>
+									<ul>
+										<li><a href="user_limit.html">Limit</a></li>
+										<li><a href="create_admin.html">Create Admin</a></li>
+										<li><a href="#">Active/Inactive</a></li>
+										
+									</ul>
+								</li>
+								<!--
+								<li><a  href="#"><i class="fa-solid fa-id-badge"></i>&nbsp;&nbsp;&nbsp;Time Management</a>
+									<ul>
+										<li><a href="#">Device Type</a></li>
+										
+									</ul>
+								</li>-->
+								<li><a href="#"><i class="fa-solid fa-sliders"></i>&nbsp;&nbsp;&nbsp;Changelog</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				
+			</div>	
+            <div class="app-main" style="padding-top:5px">
+                <div class="app-main__outer" style="padding-top:5px">
+                    <div class="app-main__inner">
+                        <div class="app-page-title1">
+							<div class="page-title-wrapper">
+								<div class="page-title-heading">
+									<div class="page-title-subheading">Global Setting > Home</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<!-- Starting of table content -->
+						<div class="row" style="padding-top: 1rem;">
+			
+					<div class="col-lg-12 col-xl-7">
+						<div class="row">
+							<div class="col-lg-12 col-xl-12">
+								<div class="main-card mb-3 card" style="background-color: #b86b77;">
+									<div class="card-body1">
+										<!-- Create a new row for "HI, ADHWA" -->
+										
+										
+										
+										<div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+											<div style="height: 250px;">
+												<div class="row">
+													<div class="col-md-9">
+														<h2 class="card-title" style="font-size: 24px; margin-left: 20px; color: white;">HI, MUFTI MENK</h2>
+													</div>
+													<div class="col-md-3 mt-2">
+														<h5 class="card-title float-end me-3" style="font-size: 16px; color: white;"><i class="fa-solid fa-user"></i>&emsp;Expert User</h5>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4 d-flex justify-content-center align-items-center mt-2">
+														<!-- Circular Image -->
+														<div style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden;">
+															<img src="https://muftimenk.com/wp-content/uploads/mufti-menk.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+														</div>
+													</div>
+													<div class="col-md-8 mt-5">
+														<h2 class="card-title" style="font-size: 30px; color: white;">WELCOME TO</h2>
+														<h2 class="card-title" style="font-size: 46px; color: white;">GLOBAL SETTING</h2>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="main-card mb-0 card" style="background-color: #fff;">
+										<div class="card-body1">
+											<h5 class="card-title">Users License: 390/1000</h5>
+											<div class="mt-2 row">
+												<div class="col-sm-12 col-md-4">
+													<div class="widget-content p-0">
+														<div class="widget-content-outer">
+															<div class="widget-content-wrapper">
+																<div class="widget-content-left1">
+																	<div class="widget-numbers text-dark">300/850</div>
+																</div>
+															</div>
+															<div class="widget-progress-wrapper mt-1">
+																<div class="progress-bar-xs progress-bar-animated-alt progress">
+																	<div class="progress-bar bg-success" role="progressbar" aria-valuenow="20"
+																		aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+																	</div>
+																</div>
+																<div class="progress-sub-label">
+																	<div class="sub-label-left font-size-md">Normal Users</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-12 col-md-4">
+													<div class="widget-content p-0">
+														<div class="widget-content-outer">
+															<div class="widget-content-wrapper">
+																<div class="widget-content-left1">
+																	<div class="widget-numbers text-dark">50/100</div>
+																</div>
+															</div>
+															<div class="widget-progress-wrapper mt-1">
+																<div class="progress-bar-xs progress-bar-animated-alt progress">
+																	<div class="progress-bar bg-warning"
+																		role="progressbar" aria-valuenow="50"
+																		aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+																	</div>
+																</div>
+																<div class="progress-sub-label">
+																	<div class="sub-label-left font-size-md">Supervisor Users</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-12 col-md-4">
+													<div class="widget-content p-0">
+														<div class="widget-content-outer">
+															<div class="widget-content-wrapper">
+																<div class="widget-content-left1">
+																	<div class="widget-numbers text-dark">40/50</div>
+																</div>
+															</div>
+															<div class="widget-progress-wrapper mt-1">
+																<div class="progress-bar-xs progress-bar-animated-alt progress">
+																	<div class="progress-bar bg-danger"
+																		role="progressbar" aria-valuenow="83"
+																		aria-valuemin="0" aria-valuemax="100" style="width: 83%;">
+																	</div>
+																</div>
+																<div class="progress-sub-label">
+																	<div class="sub-label-left font-size-md">Expert Users</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										   </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						
+						
+							<div class="col-lg-12 col-xl-12">
+								<div class="main-card mb-3 card">
+								<div class="card-header">
+								   <h5 class="card-title" style="margin-bottom:0;">Previous Activities</h5>
+								</div>
+									<div class="card-body">
+										<div class="scroll-area-lg">
+											<div class="scrollbar-container">
+												<div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Employee Development: Box Description</h4>
+																<p>
+																	Edit Box Description.
+																</p>
+																<span class="vertical-timeline-element-date">20th FEB<br>17:46:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>18:02:28</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Leave Management : Leave Entitlement</h4>
+																<p>
+																	Add Leave Management.
+																	<li>Date From : 16/04/2024</li>
+																	<li>Date To : 31/12/9999</li>
+																	<li>Leave Type Name : cuti maternity</li>
+																	<li>Type of Leave/Absences : Maternity Leave</li>
+																	<li>Flex : Check</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:45:23</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+													<div class="vertical-timeline-item vertical-timeline-element">
+														<div>
+															<span class="vertical-timeline-element-icon bounce-in">
+																<i class="badge badge-dot badge-dot-xl bg-success"></i>
+															</span>
+															<div class="vertical-timeline-element-content bounce-in">
+																<h4 class="timeline-title">GS : Module Setting : Training Management : Training Cost Setting</h4>
+																<p>
+																	Add new Training Management : Training Cost Setting.
+																	<li>Applicant's Name:</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Date From : 2024-01-01</li>
+																	<li>Cost Group Type : Health 2024</li>
+																</p>
+																<span class="vertical-timeline-element-date">31st JAN<br>12:35:20</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-lg-12 col-xl-5">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="main-card mb-3 card">
+								<div class="card-header">
+								   <h5 class="card-title" style="margin-bottom:0;">List of Module</h5>
+									<div class="btn-actions-pane-right">
+										<div class="nav">
+											<a data-bs-toggle="tab" href="#tab-eg4-0" class="border-0 btn-pill btn-wide btn-transition active btn btn-outline-custom">Used Module</a>
+											<a data-bs-toggle="tab" href="#tab-eg4-1" class="me-1 ms-1 btn-pill btn-wide border-0 btn-transition  btn btn-outline-custom">Unused Module</a>
+										</div>
+									</div>
+								</div>
+									<div class="card-body1">
+										<div class="scroll-area-sm">
+                                            <div class="scrollbar-container ps--active-y">
+
+<style>
+.sticky-thead {
+	position: sticky;
+	top: 0;
+	background-color: #fff; /* Optional: Add background color for better visibility */
+}
+</style>
+												<div class="tab-content">
+												 <div class="tab-pane active" id="tab-eg4-0" role="tabpanel">
+												 <table style="width: 100%;" id="example" class="table table-hover  display">
+													<thead class="sticky-thead">
+														<tr>
+															<th style="text-align: center; width: 10%;">No</th>
+															<th style="text-align: center; width: 20%;">Code</th>
+															<th style="text-align: left;">Module</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td style="text-align: center;">1</td>
+															<td style="text-align: center;">EA</td>
+															<td>Employee Administration</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;" style="text-align: center;">2</td>
+															<td style="text-align: center;">ED</td>
+															<td>Employee Development</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">3</td>
+															<td style="text-align: center;">CB</td>
+															<td>Compensation & Benefits</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">4</td>
+															<td style="text-align: center;">FM</td>
+															<td>Form Management</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">5</td>
+															<td style="text-align: center;">LM</td>
+															<td>Leave Management</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">6</td>
+															<td style="text-align: center;">PR</td>
+															<td>Payroll</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">7</td>
+															<td style="text-align: center;">TM</td>
+															<td>Time Management</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">8</td>
+															<td style="text-align: center;">PM</td>
+															<td>Position Management</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">9</td>
+															<td style="text-align: center;">PMS</td>
+															<td>Performance Management</td>
+														</tr>
+														<!-- Add more rows as needed -->
+													</tbody>
+												</table>
+												</div>
+												<div class="tab-pane" id="tab-eg4-1" role="tabpanel">
+												 <table style="width: 100%;" id="example" class="table table-hover  display">
+													<thead class="sticky-thead">
+														<tr>
+															<th style="text-align: center; width: 10%;">No</th>
+															<th style="text-align: center; width: 20%;">Code</th>
+															<th style="text-align: left;">Module</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td style="text-align: center;">1</td>
+															<td style="text-align: center;">FB</td>
+															<td>Flex Benefits</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">2</td>
+															<td style="text-align: center;">CM</td>
+															<td>Claim Management</td>
+														</tr>
+														<tr>
+															<td style="text-align: center;">3</td>
+															<td style="text-align: center;">RM</td>
+															<td>Report Management</td>
+														</tr>
+														
+														<!-- Add more rows as needed -->
+													</tbody>
+												</table>
+												</div>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>						
+								
+							<div class="col-lg-12">
+								<div class="main-card mb-3 card">
+								<div class="card-header">
+								   <h5 class="card-title" style="margin-bottom:0;">Company Authorization</h5>
+								</div>
+									<div class="card-body1">
+										<div class="scroll-area-sm">
+                                            <div class="scrollbar-container ps--active-y">
+
+<style>
+.sticky-thead {
+	position: sticky;
+	top: 0;
+	background-color: #fff; /* Optional: Add background color for better visibility */
+}
+</style>
+												
+												 <table style="width: 100%;" id="example" class="table table-hover  display">
+												<thead>
+													<tr>
+														<th>Code</th>
+														<th>Company</th>
+														<th>Type</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>HRSC</td>
+														<td>HR Systems & Consulting Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<tr>
+														<td>CMSB</td>
+														<td>Chahaya Manangement Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<tr>
+														<td>DSB</td>
+														<td>Dewana Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<tr>
+														<td>ABC</td>
+														<td>Abe Boboi Company Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<tr>
+														<td>DEF</td>
+														<td>Defend Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<tr>
+														<td>GLHF</td>
+														<td>GLHF Company Sdn Bhd</td>
+														<td>Super User</td>
+													</tr>
+													<!-- Add more rows as needed -->
+												</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>	
+								
+							<div class="col-lg-12"> 
+								<div class="main-card mb-3 card">
+								<div class="card-header">
+								   <h5 class="card-title" style="margin-bottom:0;">Modules Authorization</h5>
+								</div>
+									<div class="card-body1">
+										<div class="ps-3 pe-3 pb-2 slick-slider-md slick-slider-hover">
+                                            <div class="slick-slider-3">
+                                                <div><h5 class="card-title1">e-P2P Base App Modules</h5>
+													<div class="scroll-area-sm">
+														<div class="scrollbar-container ps--active-y">
+															<table style="width: 100%;" id="example" class="table table-hover table-front display">
+																<thead class="sticky-thead">
+																	<tr>
+																		<th>Type</th>
+																		<th>Company</th>
+																		<th style="text-align: center;" class="rp-tooltip" 
+																			data-bs-toggle="tooltip" 
+																			data-bs-placement="top" 
+																			data-bs-html="true" 
+																			title="0 = No Access<br>1 = View Only<br>2 = Edit Only<br>3 = Add, Edit<br>4 = Add, Edit, Delete">
+																			Level 
+																			<i class="fas fa-info-circle ml-1" style="color: grey;"></i>
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Super User</td>
+																		<td>Employee Administration</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Employee Development</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Compensation & Benefits</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Training Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Position Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Payroll</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Loan Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Leave Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Performance Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Reports</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Policy & Procedures</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>e-Forms Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<!-- Add more rows as needed -->
+																</tbody>
+															</table>
+														</div>
+													</div>
+                                                </div>
+                                                <div><h5 class="card-title1">e-P2P Self-Service Modules</h5>
+													<div class="scroll-area-sm">
+														<div class="scrollbar-container ps--active-y">
+<style>
+  .tooltip-inner {
+    text-align: left;
+  }
+</style>
+															<table style="width: 100%;" id="example" class="table table-hover table-front display">
+																<thead class="sticky-thead">
+																	<tr>
+																		<th>Type</th>
+																		<th>Company</th>
+																		<th style="text-align: center;" class="rp-tooltip" 
+																			data-bs-toggle="tooltip" 
+																			data-bs-placement="top" 
+																			data-bs-html="true" 
+																			title="0 = No Access<br>1 = View Only<br>2 = Edit Only<br>3 = Add, Edit<br>4 = Add, Edit, Delete">
+																			Level 
+																			<i class="fas fa-info-circle ml-1" style="color: grey;"></i>
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Super User</td>
+																		<td>Employee Administration</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Employee Development</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Compensation & Benefits</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Training Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Position Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Payroll</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Loan Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Leave Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Performance Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Reports</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Policy & Procedures</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>e-Forms Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<!-- Add more rows as needed -->
+																</tbody>
+															</table>
+														</div>
+													</div>
+                                                </div>
+                                                <div><h5 class="card-title1">e-Form Management Modules</h5>
+													<div class="scroll-area-sm">
+														<div class="scrollbar-container ps--active-y">
+															<table style="width: 100%;" id="example" class="table table-hover table-front display">
+																<thead class="sticky-thead">
+																	<tr>
+																		<th>Type</th>
+																		<th>Company</th>
+																		<th style="text-align: center;" class="rp-tooltip" 
+																			data-bs-toggle="tooltip" 
+																			data-bs-placement="top" 
+																			data-bs-html="true" 
+																			title="0 = No Access<br>1 = View Only<br>2 = Edit Only<br>3 = Add, Edit<br>4 = Add, Edit, Delete">
+																			Level 
+																			<i class="fas fa-info-circle ml-1" style="color: grey;"></i>
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Super User</td>
+																		<td>Employee Administration</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Employee Development</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Compensation & Benefits</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Training Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Position Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Payroll</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Loan Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Leave Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Performance Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Reports</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>Policy & Procedures</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>e-Forms Management</td>
+																		<td style="text-align: center;">4</td>
+																	</tr>
+																	<!-- Add more rows as needed -->
+																</tbody>
+															</table>
+														</div>
+													</div>
+                                                </div>
+                                            </div>
+                                        
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+						<!-- end of table content -->
+						
+					</div>
+					<!-- Site footer -->
+					<footer class="site-footer">
+					  <div class="container">
+						<div class="row align-items-center">
+						  <div class="col-md-4 col-sm-6 col-xs-12">
+							<!-- Logo here -->
+							<div class="logo">
+							  <img src="./images/logo_ep2p.png" alt="Logo">
+							</div>
+						  </div>
+						  <div class="col-md-5 col-sm-6 col-xs-12 mt-3">
+							<p>Copyright © 2024 <a href="#">HR Systems & Consulting Sdn Bhd</a>. All rights reserved.</p>
+						  </div>
+						  <div class="col-md-3 col-sm-6 col-xs-12">
+							<ul class="social-icons">
+							  <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+							  <li><a class="linkedin" href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+							  <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+							</ul>
+						  </div>
+						</div>
+					  </div>
+					</footer>
+				</div>
+			</div>
+		</div>
+        
+        <div class="app-drawer-overlay d-none animated fadeIn"></div>
+        <!-- plugin dependencies -->
+        <script type="text/javascript" src="./vendors/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="./vendors/moment/moment.js"></script>
+        <script type="text/javascript" src="./vendors/metismenu/dist/metisMenu.js"></script>
+        <script type="text/javascript" src="./vendors/bootstrap4-toggle/js/bootstrap4-toggle.min.js"></script>
+        <script type="text/javascript" src="./vendors/jquery-circle-progress/dist/circle-progress.min.js"></script>
+        <script type="text/javascript" src="./vendors/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+        <script type="text/javascript" src="./vendors/toastr/build/toastr.min.js"></script>
+        <script type="text/javascript" src="./vendors/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js"></script>
+        <script type="text/javascript" src="./vendors/apexcharts/dist/apexcharts.min.js"></script>
+        <script type="text/javascript" src="./vendors/bootstrap-table/dist/bootstrap-table.min.js"></script>
+        <script type="text/javascript" src="./vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="./vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="./vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script type="text/javascript" src="./vendors/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="./vendors/slick-carousel/slick/slick.min.js"></script>
+        <script type="text/javascript" src="./vendors/chart.js/dist/Chart.min.js"></script>
+        <!-- custome.js -->
+        <script type="text/javascript" src="./js/charts/apex-charts.js"></script>
+        <script type="text/javascript" src="./js/circle-progress.js"></script>
+        <script type="text/javascript" src="./js/demo.js"></script>
+        <script type="text/javascript" src="./js/scrollbar.js"></script>
+        <script type="text/javascript" src="./js/toastr.js"></script>
+        <script type="text/javascript" src="./js/treeview.js"></script>
+        <script type="text/javascript" src="./js/form-components/toggle-switch.js"></script>
+        <script type="text/javascript" src="./js/carousel-slider.js"></script>
+        <script type="text/javascript" src="./js/charts/chartjs.js"></script>
+        <script type="text/javascript" src="./js/app.js"></script>
+		<script>
+			function showSidebar(){
+			  const sidebar = document.querySelector('.sidebar')
+			  sidebar.style.display = 'flex'
+			}
+			function hideSidebar(){
+			  const sidebar = document.querySelector('.sidebar')
+			  sidebar.style.display = 'none'
+			}
+			
+			
+		</script>
+    </body>
+</html>
